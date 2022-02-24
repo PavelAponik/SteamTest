@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.util.Strings;
 
 import javax.naming.NamingException;
-import java.util.Locale;
 
 public class Browser {
 
@@ -15,27 +14,27 @@ public class Browser {
     private static final String BROWSER_BY_DEFAULT = "chrome";
 
     public static PropertiesResourceManager props;
-    public static BrowserFactory currentBrowser;
-    private static Browser browserInstance;
+    public static Browsers currentBrowser;
+    private static Browser instance;
     private static WebDriver driver;
 
-    public static Browser.Browsers currentBrowser;
+
 
     private Browser(){
         currentBrowser.toString();
     }
 
     public static Browser getInstance(){
-        if(browserInstance == null) {
+        if(instance == null) {
             initProperties();
             try {
                 driver = BrowserFactory.browserSetUp(currentBrowser.toString());
             } catch (NamingException e) {
                 e.printStackTrace();
             }
-            browserInstance = new Browser();
+            instance = new Browser();
         }
-        return browserInstance;
+        return instance;
     }
 
     public void exit(){
@@ -44,7 +43,7 @@ public class Browser {
         }catch (Exception e){
             e.printStackTrace();
         }finally {
-            browserInstance = null;
+            instance = null;
         }
     }
 
@@ -61,7 +60,6 @@ public class Browser {
 
     }
 
-
     public enum Browsers{
         CHROME("chrome"),
         FIREFOX("firefox");
@@ -74,5 +72,20 @@ public class Browser {
         public String toString(){
             return value;
         }
+    }
+
+    public void windowMaximaze(){
+        try{
+            driver.manage().window().maximize();
+        } catch (Exception e){}
+    }
+
+    public void navigate(final String url){
+        driver.navigate().to(url);
+    }
+
+
+    public boolean isBrowserAlive(){
+        return instance != null;
     }
 }
