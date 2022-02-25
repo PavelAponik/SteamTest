@@ -1,29 +1,20 @@
 package Steam.test;
 
-import framework.PropertiesResourceManager;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import Steam.pages.MainPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
+import framework.PropertiesManager;
 
 public class SteamTest {
     public WebDriver driver;
 
 
-    @Test
-    public void driverSetUp(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(PropertiesResourceManager.getProperty("url"));
-    }
 
-    @AfterTest
-    public void tearDown(){
-        driver.quit();
+    @Test
+    public void steamTest(){
+        PropertiesManager propertiesManager = new PropertiesManager();
+
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseLanguage(propertiesManager.getProperty(PropertiesManager.configPropertyPath, "language"));
     }
 }
