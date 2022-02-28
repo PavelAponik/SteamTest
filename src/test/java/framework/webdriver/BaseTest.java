@@ -4,8 +4,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 
-
-
 public abstract class BaseTest extends Browser {
 
 
@@ -16,7 +14,7 @@ public abstract class BaseTest extends Browser {
 
     @AfterClass
     public void after(){
-        Browser.tearDown();
+        //Browser.tearDown();
     }
 
 }

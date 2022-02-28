@@ -6,13 +6,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.function.Function;
 
 import static framework.webdriver.Browser.propertyManager;
-import static framework.webdriver.BrowserFactory.browserSetUp;
 
 public abstract class BasePage {
 
-    public static WebDriver driver = browserSetUp();
     public WebDriverWait wait;
-
+    public static WebDriver driver = Browser.driver;
 
     public BasePage(WebDriver driver){
         this.driver = driver;

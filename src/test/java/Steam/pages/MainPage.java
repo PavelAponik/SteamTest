@@ -8,6 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.HashMap;
+
+
 public class MainPage extends BasePage {
 
     public MainPage(WebDriver driver) {
@@ -15,16 +18,29 @@ public class MainPage extends BasePage {
     }
 
 
-    private final Button btnChooseLanguage = new Button("language_pulldown");
+    Button btnChooseLanguage = new Button(By.id("language_pulldown"));
     String menuItemLocator = "//span//a[contains(@class, 'pulldown_desktop') and contains(text(), '%s')]";
     String subMenuItemLocator = "//div//a[contains(@class, 'popup_menu_item') and contains(text(), '%s')]";
     String languageList = "//div[@id='language_dropdown']//a[contains(@class, 'popup_menu_item tight')]";
+    HashMap<String, String> languages = new HashMap<>();
+    public static String currentLanguage;
+
+
+    public HashMap<String,String> languageList(){
+        languages.put("English", "src/test/resources/localization/loc_en.properties");
+        languages.put("Русский", "src/test/resources/localization/loc_ru.properties");
+        return languages;
+    }
 
     public void chooseLanguage(String language){
         Dropdown drpChooseLanguage = new Dropdown(By.xpath(String.format(subMenuItemLocator, language)));
         btnChooseLanguage.click();
         if(isLanguageChosen(language)==false){
+            currentLanguage = languageList().get(language);
             drpChooseLanguage.click();
+        }else{
+            currentLanguage = languageList().get(language);
+            btnChooseLanguage.click();
         }
     }
 

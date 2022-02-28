@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import javax.naming.NamingException;
 public class BrowserFactory {
 
     public static String browser;
@@ -30,29 +29,5 @@ public class BrowserFactory {
         }
         return driver;
     }
-
-    public static WebDriver browserSetUp(final String type) throws NamingException{
-        for (Browsers t : Browsers.values()){
-            if (t.toString().equalsIgnoreCase(type)){
-                return browserSetUp(String.valueOf(t));
-            }
-        }
-        throw new NamingException();
-    }
-
-    public enum Browsers{
-        CHROME("chrome"),
-        FIREFOX("firefox");
-
-        public String value;
-
-        Browsers(final String values){
-            value = values;
-        }
-        public String toString(){
-            return value;
-        }
-    }
-
 
 }

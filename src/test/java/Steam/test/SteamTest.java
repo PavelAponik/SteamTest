@@ -1,5 +1,6 @@
 package Steam.test;
 
+import Steam.pages.CategoryPage;
 import Steam.pages.MainPage;
 import framework.webdriver.BaseTest;
 import org.testng.annotations.Test;
@@ -17,5 +18,12 @@ public class SteamTest extends BaseTest {
 
         MainPage mainPage = new MainPage(driver);
         mainPage.chooseLanguage(propertiesManager.getProperty(PropertiesManager.configPropertyPath, "language"));
+
+        mainPage.menuNavigation(propertiesManager.getProperty(MainPage.currentLanguage, "mainMenuItem"),
+                propertiesManager.getProperty(MainPage.currentLanguage, "mainMenuSubItem"));
+
+        CategoryPage categoryPage = new CategoryPage(driver);
+        categoryPage.searchForBestDiscount();
+
     }
 }
