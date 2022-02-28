@@ -2,21 +2,15 @@ package framework.webdriver;
 
 import framework.PropertiesManager;
 import org.openqa.selenium.WebDriver;
-import org.testng.util.Strings;
-
-import javax.naming.NamingException;
-
 import java.util.concurrent.TimeUnit;
-
 import static framework.webdriver.BrowserFactory.browserSetUp;
 
 public class Browser {
 
-    public static PropertiesManager propertyManager;
-    public static WebDriver driver;
+    public static PropertiesManager propertyManager = new PropertiesManager();
+    public static WebDriver driver = browserSetUp();
 
-    public static void setUp() throws NamingException {
-        driver = browserSetUp(String.valueOf(driver));
+    public static void setUp(){
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(propertyManager.getProperty(PropertiesManager.configPropertyPath, "implicit_wait")), TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(propertyManager.getProperty(PropertiesManager.configPropertyPath, "implicit_wait")), TimeUnit.SECONDS);

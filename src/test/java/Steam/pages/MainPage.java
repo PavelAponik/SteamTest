@@ -15,7 +15,7 @@ public class MainPage extends BasePage {
     }
 
 
-    Button btnChooseLanguage = new Button(By.id("language_pulldown"));
+    private final Button btnChooseLanguage = new Button("language_pulldown");
     String menuItemLocator = "//span//a[contains(@class, 'pulldown_desktop') and contains(text(), '%s')]";
     String subMenuItemLocator = "//div//a[contains(@class, 'popup_menu_item') and contains(text(), '%s')]";
     String languageList = "//div[@id='language_dropdown']//a[contains(@class, 'popup_menu_item tight')]";

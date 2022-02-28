@@ -1,7 +1,7 @@
 package framework.elements;
 
 import framework.PropertiesManager;
-import framework.webdriver.Browser;
+import framework.webdriver.BrowserFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,9 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public abstract class BaseElement {
+public class BaseElement {
 
-    WebDriver driver = Browser.driver;
+    WebDriver driver = BrowserFactory.browserSetUp();
     WebElement element;
     By locator;
     WebDriverWait wait = new WebDriverWait(driver, 10);

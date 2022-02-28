@@ -1,17 +1,16 @@
 package framework.webdriver;
 
 import framework.PropertiesManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.function.Function;
 
 import static framework.webdriver.Browser.propertyManager;
+import static framework.webdriver.BrowserFactory.browserSetUp;
 
 public abstract class BasePage {
 
-    public WebDriver driver;
+    public static WebDriver driver = browserSetUp();
     public WebDriverWait wait;
 
 

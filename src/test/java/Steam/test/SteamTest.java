@@ -1,12 +1,13 @@
 package Steam.test;
 
 import Steam.pages.MainPage;
-import org.openqa.selenium.WebDriver;
+import framework.webdriver.BaseTest;
 import org.testng.annotations.Test;
 import framework.PropertiesManager;
 
-public class SteamTest {
-    public WebDriver driver;
+
+public class SteamTest extends BaseTest {
+
 
 
 
