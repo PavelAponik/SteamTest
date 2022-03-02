@@ -2,7 +2,6 @@ package framework.elements;
 
 import framework.PropertiesManager;
 import framework.webdriver.Browser;
-import framework.webdriver.BrowserFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -49,8 +48,12 @@ public class BaseElement {
         return false;
     }
 
-    public void waitUntilPresent() {
-        wait.until((ExpectedCondition<Boolean>) (x) -> {
+    public boolean isDisplayed(){
+        return driver.findElement(locator).isDisplayed();
+    }
+
+    public boolean waitUntilPresent() {
+        wait.until((ExpectedCondition<Boolean>) (driver) -> {
             try {
                 return isPresent();
             }catch (Exception e){
@@ -59,10 +62,11 @@ public class BaseElement {
         });
         try {
             driver.manage().timeouts().implicitlyWait(Integer.parseInt(propertiesManager.getProperty(PropertiesManager.configPropertyPath, "implicit_wait")), TimeUnit.SECONDS);
-            element.isDisplayed();
+            return element.isDisplayed();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     public void moveToElement(){

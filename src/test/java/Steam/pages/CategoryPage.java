@@ -24,7 +24,7 @@ public class CategoryPage extends BasePage {
     static final String discountMenuLocator = "//div[contains(@class, 'saleitembrowser_FlavorLabel_KDLAS Focusable') and contains(text(), 'Discounted')]";
     public static final String discountLocator = "//div[contains(@class, 'facetedbrowse_FacetedBrowseItems_3EdZT')]//div[contains(@class, 'salepreviewwidgets_StoreSaleDiscountBox_cnkoF')]";
     public static final String maxDiscountLocator = "//div[contains(@class, 'facetedbrowse_FacetedBrowseItems_3EdZT')]//div[contains(@class, 'salepreviewwidgets_StoreSaleDiscountBox_cnkoF') and contains(text(), '%s')]";
-    public static final String gameWithMaxDiscountLocator = "//div[contains(@class, 'facetedbrowse_FacetedBrowseItems_3EdZT')]//div[contains(@class, 'salepreviewwidgets_StoreSaleDiscountBox_cnkoF') and contains(text(), '%s')]/preceding :: div[contains(@class,'salepreviewwidgets_StoreSaleWidgetTitle_2ekpT')]";
+    public static final String gameWithMaxDiscountLocator = "//div[contains(@class, 'facetedbrowse_FacetedBrowseItems_3EdZT')]//div[contains(@class, 'salepreviewwidgets_StoreSaleDiscountBox_cnkoF') and contains(text(), '%s')]/..//..//..//..//div[contains(@class,'salepreviewwidgets_StoreSaleWidgetTitle_2ekpT')]";
 
     public void searchForBestDiscount(){
         WebElement lblDiscountMenu = driver.findElement(By.xpath(discountMenuLocator));
@@ -49,10 +49,10 @@ public class CategoryPage extends BasePage {
         Random random = new Random();
         int randomMax = random.nextInt(maxDiscounts.size());
         System.out.println(maxDiscount);
-        //String randomDiscount = maxDiscounts.get(randomMax).getText();
-        //actions.moveToElement((WebElement) By.xpath(String.format(gameWithMaxDiscountLocator, maxDiscounts.get(randomMax)))).click().build().perform();
-        driver.findElement(By.xpath(String.format(gameWithMaxDiscountLocator, maxDiscount))).click();
+        String randomDiscount = maxDiscounts.get(randomMax).getText();
 
+        //actions.moveToElement((WebElement) By.xpath(String.format(gameWithMaxDiscountLocator, maxDiscounts.get(randomMax)))).click().build().perform();
+        driver.findElement(By.xpath(String.format(gameWithMaxDiscountLocator, randomDiscount))).click();
     }
 
 }
