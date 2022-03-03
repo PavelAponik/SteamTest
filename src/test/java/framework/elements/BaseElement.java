@@ -53,7 +53,7 @@ public class BaseElement {
     }
 
     public boolean waitUntilPresent() {
-        wait.until((ExpectedCondition<Boolean>) (driver) -> {
+        wait.until((ExpectedCondition<Boolean>) (x) -> {
             try {
                 return isPresent();
             }catch (Exception e){

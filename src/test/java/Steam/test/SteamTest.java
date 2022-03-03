@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 import framework.PropertiesManager;
 import org.testng.asserts.SoftAssert;
 
+import java.io.IOException;
+
 
 public class SteamTest extends BaseTest {
 
@@ -32,6 +34,7 @@ public class SteamTest extends BaseTest {
 
         categoryPage = new CategoryPage(driver);
         softAssert.assertEquals(driver.getTitle(), propertiesManager.getProperty(MainPage.currentLanguage, "category_Page_Title") );
+        categoryPage.goToDiscounts();
         categoryPage.searchForBestDiscount();
 
         ageCheckPage = new AgeCheckPage(driver);
@@ -40,11 +43,11 @@ public class SteamTest extends BaseTest {
         }
 
         gamePage = new GamePage(driver);
-        //softAssert.assertEquals(driver.getTitle()), CategoryPage.);
         gamePage.clickIstallSteam();
 
         aboutPage = new AboutPage(driver);
         softAssert.assertEquals(driver.getTitle(), propertiesManager.getProperty(MainPage.currentLanguage,"about_Page_Title"));
+        aboutPage.downloadApp();
 
 
 

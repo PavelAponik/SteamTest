@@ -4,13 +4,10 @@ import framework.elements.Button;
 import framework.webdriver.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GamePage extends BasePage {
 
-    public WebDriverWait wait = new WebDriverWait(driver, 10);
-    public static final String installSteam = "//a[contains(@class, 'header_installsteam_btn_content')]";
+    public static final String installSteam = "//div[contains(@class, 'header_installsteam_btn header_installsteam_btn_green')]";
     Button btnInstallSteam = new Button(By.xpath(installSteam));
 
     public GamePage(WebDriver driver) {
