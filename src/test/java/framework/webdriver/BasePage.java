@@ -9,17 +9,20 @@ import static framework.webdriver.Browser.propertyManager;
 
 public abstract class BasePage {
 
-    public WebDriverWait wait;
+    WebDriverWait wait= new WebDriverWait(driver, Integer.parseInt(propertyManager.getProperty(PropertiesManager.configPropertyPath,
+            "explicit_wait")));
     public static WebDriver driver = Browser.driver;
 
-    public BasePage(WebDriver driver){
-        this.driver = driver;
-    }
-
     public void waitUntilExpectedConditions(Function expectedConditions){
-        WebDriverWait wait = new WebDriverWait(driver, Integer.parseInt(propertyManager.getProperty(PropertiesManager.configPropertyPath,
-                "explicit_wait")));
         wait.until(expectedConditions);
     }
 
+    public void changeTab(){
+        for (String windowHandle : driver.getWindowHandles()) {
+            if(!driver.getWindowHandle().contentEquals(windowHandle)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+    }
 }

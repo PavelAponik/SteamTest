@@ -1,26 +1,26 @@
 package framework.webdriver;
 
-import framework.PropertiesManager;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import Steam.pages.AboutPage;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
-import java.io.File;
 
 
 public abstract class BaseTest extends Browser {
 
 
-    @BeforeClass
+    @BeforeTest
     public void before(){
         Browser.setUp();
-        File file = new File(propertyManager.getProperty(PropertiesManager.configPropertyPath, "src/downloads/") +
-                propertyManager.getProperty(PropertiesManager.configPropertyPath, "SteamSetup.exe"));
-        if (file.exists()){
-            file.delete();
-        }
     }
 
-    @AfterClass
+    @BeforeTest
+    public void trashClean(){
+        AboutPage aboutPage = new AboutPage();
+        aboutPage.deleteFile(aboutPage.isFilePresent());
+    }
+
+    @AfterTest
     public void after(){
         //Browser.tearDown();
     }
