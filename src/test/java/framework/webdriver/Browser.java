@@ -23,6 +23,4 @@ public class Browser {
         driver.quit();
 
     }
-
-
 }

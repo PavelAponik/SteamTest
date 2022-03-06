@@ -6,7 +6,6 @@ import framework.elements.TextBox;
 import framework.webdriver.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 
 public class AgeCheckPage extends BasePage {
 

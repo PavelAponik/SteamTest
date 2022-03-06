@@ -24,7 +24,7 @@ public class BrowserFactory {
             case "chrome":
                 HashMap<String, Object> chromePrefs = new HashMap<>();
                 chromePrefs.put("profile.default_content_settings.popups", 0);
-                chromePrefs.put("download.default_directory", System.getProperty("user.dir") + propertiesManager.getProperty(PropertiesManager.configPropertyPath, "steam_save_dir"));
+                chromePrefs.put("download.default_directory", System.getProperty("user.dir") + propertiesManager.getProperty(PropertiesManager.configPropertyPath, "download_directory"));
                 chromePrefs.put("safebrowsing.enabled", "true");
                 ChromeOptions options = new ChromeOptions();
                 options.setExperimentalOption("prefs", chromePrefs);
@@ -34,7 +34,7 @@ public class BrowserFactory {
             case "firefox":
                 FirefoxProfile profile = new FirefoxProfile();
                 profile.setPreference("browser.download.folderList", 2);
-                profile.setPreference("browser.download.dir",System.getProperty("user.dir") + propertiesManager.getProperty(PropertiesManager.configPropertyPath, "steam_save_dir"));
+                profile.setPreference("browser.download.dir",System.getProperty("user.dir") + propertiesManager.getProperty(PropertiesManager.configPropertyPath, "download_directory"));
                 profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/csv, text/csv, text/plain,application/octet-stream doc xls pdf txt");
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 WebDriverManager.firefoxdriver().setup();

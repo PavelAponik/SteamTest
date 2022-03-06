@@ -42,6 +42,6 @@ public class AboutPage extends BasePage{
     public void deleteFile(boolean bool){
         if(bool){
             file.delete();
-    }
+        }
     }
 }
