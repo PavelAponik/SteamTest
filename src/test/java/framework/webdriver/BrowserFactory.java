@@ -15,7 +15,7 @@ public class BrowserFactory {
 
     public static String browser;
 
-    public static WebDriver browserSetUp(){
+    public static WebDriver browserSetUp(final String browser){
         WebDriver driver = null;
         PropertiesManager propertiesManager = new PropertiesManager();
         //browser = propertiesManager.getProperty(PropertiesManager.configPropertyPath, "browser");
