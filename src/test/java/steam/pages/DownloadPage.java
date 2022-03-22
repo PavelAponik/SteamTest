@@ -4,21 +4,22 @@ import framework.PropertiesManager;
 import framework.elements.Button;
 import framework.webdriver.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 
 public class DownloadPage extends BasePage{
 
-    PropertiesManager propertiesManager = new PropertiesManager();
-
     public static final String INSTALL_STEAM_APP = "//a[contains(@class, 'about_install')]";
-    Button btnInstallSteamApp = new Button(By.xpath(INSTALL_STEAM_APP));
-
+    PropertiesManager propertiesManager = new PropertiesManager();
+    private final Button btnInstallSteamApp = new Button(By.xpath(INSTALL_STEAM_APP), "Install Steam");
     File file = new File(System.getProperty("user.dir")
             + propertiesManager.getProperty(PropertiesManager.configPropertyPath, "download_directory")
             + propertiesManager.getProperty(PropertiesManager.configPropertyPath, "download_file_name"));
+
+    public DownloadPage() {
+        super(By.xpath("//body[@class='v6 infinite_scrolling responsive_page']"), "DownloadPage");
+    }
 
     public boolean waitForDownload(final File file){
         return (new WebDriverWait(driver,

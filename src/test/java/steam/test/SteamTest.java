@@ -58,7 +58,7 @@ public class SteamTest extends BaseTest {
         gamePage.clickInstallSteam();
 
         downloadPage = new DownloadPage();
-        softAssert.assertEquals(driver.getTitle(), propertiesManager.getProperty(MainPage.currentLanguage,"about_Page_Title"));
+        softAssert.assertEquals(driver.getTitle(), propertiesManager.getProperty(MainPage.currentLanguage,"download_Page_Title"));
         logger.info("Downloading the Steam App");
         downloadPage.downloadApp();
     }

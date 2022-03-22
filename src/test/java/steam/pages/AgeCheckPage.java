@@ -9,9 +9,13 @@ import org.openqa.selenium.NoSuchElementException;
 
 public class AgeCheckPage extends BasePage {
 
-    TextBox tbxCheckAge = new TextBox(By.xpath("//div[contains(@class, 'agegate_birthday_desc')]"));
-    Dropdown drpAgeYear = new Dropdown(By.id("ageYear"));
-    Button btnViewPage = new Button(By.id("view_product_page_btn"));
+    private final TextBox tbxCheckAge = new TextBox(By.xpath("//div[contains(@class, 'agegate_birthday_desc')]"), "Check Age");
+    private final Dropdown drpAgeYear = new Dropdown(By.id("ageYear"), "Year");
+    private final Button btnViewPage = new Button(By.id("view_product_page_btn"), "View Page");
+
+    public AgeCheckPage() {
+        super(By.xpath("//body[@class='v6 infinite_scrolling responsive_page']"), "AgeCheckPage");
+    }
 
     public boolean isCheckAgePageOpened(){
         try {

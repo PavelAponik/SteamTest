@@ -6,7 +6,11 @@ import org.openqa.selenium.By;
 
 public class GamePage extends BasePage {
 
-    Button btnInstallSteam = new Button(By.xpath("//div[contains(@class, 'header_installsteam_btn header_installsteam_btn_green')]"));
+    private final Button btnInstallSteam = new Button(By.xpath("//div[contains(@class, 'header_installsteam_btn header_installsteam_btn_green')]"), "Install Steam");
+
+    public GamePage() {
+        super(By.xpath("//div[@id = 'appHubAppName'"),"GamePage");
+    }
 
     public void clickInstallSteam(){
         btnInstallSteam.click();

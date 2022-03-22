@@ -18,13 +18,15 @@ public class BaseElement {
     WebDriver driver = Browser.driver;
     WebElement element;
     By locator;
+    String name;
     WebDriverWait wait = new WebDriverWait(driver, 10);
     List<WebElement> elementList;
     PropertiesManager propertiesManager = new PropertiesManager();
     JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
 
-    public BaseElement(By locator){
+    public BaseElement(By locator, String name){
         this.locator = locator;
+        this.name = name;
     }
 
     public WebElement getElement(){

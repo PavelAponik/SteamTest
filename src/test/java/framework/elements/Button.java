@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public class Button extends BaseElement{
 
-    public Button(By locator) {
-        super(locator);
+    public Button(final By locator, final String name) {
+        super(locator, name);
     }
 }

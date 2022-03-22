@@ -12,6 +12,10 @@ public class CategoryPage extends BasePage {
     public static final String DISCOUNT_LOCATOR = "//div[contains(@class, 'discount_block  discount_block_inline')]/div[contains(@class, 'discount_pct')]";
     public static final String GAME_WITH_MAX_DISCOUNT_LOCATOR = "//div[contains(@class, 'discount_block  discount_block_inline')]/div[@class = 'discount_pct' and contains(text(), '%s')]";
 
+    public CategoryPage() {
+        super(By.xpath("//body[@class='v6 infinite_scrolling responsive_page']"), "CategoryPage");
+    }
+
     public void searchForBestDiscount(){
         List<WebElement> discounts = driver.findElements(By.xpath(DISCOUNT_LOCATOR));
         List<String> list = new ArrayList<>();
