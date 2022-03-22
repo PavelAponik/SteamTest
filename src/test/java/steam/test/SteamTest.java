@@ -44,10 +44,8 @@ public class SteamTest extends BaseTest {
         categoryPage = new CategoryPage();
         softAssert.assertEquals(driver.getTitle(), propertiesManager.getProperty(MainPage.currentLanguage, "category_Page_Title") );
         logger.info("Searching for the game with the maximum discount");
-        categoryPage.goToDiscounts();
         categoryPage.searchForBestDiscount();
         logger.info("Opening the Game page");
-        categoryPage.gameClick();
 
         ageCheckPage = new AgeCheckPage();
         if(ageCheckPage.isCheckAgePageOpened()){

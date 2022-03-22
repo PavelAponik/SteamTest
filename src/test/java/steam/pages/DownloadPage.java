@@ -22,12 +22,7 @@ public class DownloadPage extends BasePage{
 
     public boolean waitForDownload(final File file){
         return (new WebDriverWait(driver,
-                Integer.parseInt(propertiesManager.getProperty(PropertiesManager.configPropertyPath, "implicit_wait"))).until(new ExpectedCondition<Boolean>() {
-            @Override
-            public Boolean apply(WebDriver driver) {
-                return file.canRead();
-            }
-        }));
+                Integer.parseInt(propertiesManager.getProperty(PropertiesManager.configPropertyPath, "implicit_wait"))).until((ExpectedCondition<Boolean>) driver -> file.canRead()));
     }
 
     public void downloadApp(){
