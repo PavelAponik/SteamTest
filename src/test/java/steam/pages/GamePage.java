@@ -1,4 +1,4 @@
-package Steam.pages;
+package steam.pages;
 
 import framework.elements.Button;
 import framework.webdriver.BasePage;

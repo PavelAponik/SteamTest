@@ -1,4 +1,4 @@
-package Steam.pages;
+package steam.pages;
 
 import framework.elements.Button;
 import framework.elements.Dropdown;
@@ -7,7 +7,6 @@ import framework.webdriver.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.HashMap;
-
 
 public class MainPage extends BasePage {
 
@@ -45,7 +44,6 @@ public class MainPage extends BasePage {
         }
         return true;
     }
-
 
     public void menuNavigation(String menuItem, String subMenuItem){
         Label lblMenuItem = new Label(By.xpath(String.format(MENU_ITEM_LOCATOR, menuItem)));

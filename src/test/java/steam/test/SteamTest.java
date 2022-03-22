@@ -1,11 +1,14 @@
-package Steam.test;
+package steam.test;
 
-import Steam.pages.*;
+import steam.pages.*;
 import framework.webdriver.BaseTest;
 import framework.webdriver.Logger;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import framework.PropertiesManager;
 import org.testng.asserts.SoftAssert;
+
+import static framework.webdriver.BasePage.driver;
 
 public class SteamTest extends BaseTest {
 
@@ -13,9 +16,15 @@ public class SteamTest extends BaseTest {
     static CategoryPage categoryPage;
     static AgeCheckPage ageCheckPage;
     static GamePage gamePage;
-    static AboutPage aboutPage;
+    static DownloadPage downloadPage;
     static PropertiesManager propertiesManager;
     static SoftAssert softAssert;
+
+    @BeforeTest
+    public void trashClean(){
+        DownloadPage downloadPage = new DownloadPage();
+        downloadPage.deleteFile(downloadPage.isFilePresent());
+    }
 
     @Test
     public void steamTest(){
@@ -50,9 +59,9 @@ public class SteamTest extends BaseTest {
         logger.info("Go to the Download Steam page");
         gamePage.clickInstallSteam();
 
-        aboutPage = new AboutPage();
+        downloadPage = new DownloadPage();
         softAssert.assertEquals(driver.getTitle(), propertiesManager.getProperty(MainPage.currentLanguage,"about_Page_Title"));
         logger.info("Downloading the Steam App");
-        aboutPage.downloadApp();
+        downloadPage.downloadApp();
     }
 }

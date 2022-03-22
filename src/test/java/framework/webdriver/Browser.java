@@ -3,7 +3,6 @@ package framework.webdriver;
 import framework.PropertiesManager;
 import org.openqa.selenium.WebDriver;
 import java.util.concurrent.TimeUnit;
-
 import static framework.webdriver.BrowserFactory.browserSetUp;
 
 public class Browser {
@@ -21,6 +20,5 @@ public class Browser {
 
     public static void tearDown(){
         driver.quit();
-
     }
 }

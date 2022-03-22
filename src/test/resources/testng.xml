@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="SteamTest">
         <classes>
-            <class name="Steam.test.SteamTest">
+            <class name="steam.test.SteamTest">
                 <methods>
                     <include name="steamTest"/>
                 </methods>

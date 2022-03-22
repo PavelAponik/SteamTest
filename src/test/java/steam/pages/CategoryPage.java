@@ -1,4 +1,4 @@
-package Steam.pages;
+package steam.pages;
 
 import framework.PropertiesManager;
 import framework.elements.Label;
@@ -23,8 +23,8 @@ public class CategoryPage extends BasePage {
     JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
 
     public void goToDiscounts(){
-        javascriptExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        javascriptExecutor.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
+        //javascriptExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        //javascriptExecutor.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
         Label lblDiscountMenu = new Label(By.xpath(String.format(DISCOUNT_MENU_LOCATOR, propertiesManager.getProperty(MainPage.currentLanguage, "discount_tab"))));
         lblDiscountMenu.clickAndWait();
         lblGamesList.scrollToElement();
@@ -44,16 +44,13 @@ public class CategoryPage extends BasePage {
                 myIndList.add(j+1);
             }
         }
-
         int indDiscount = myIndList.get(random.nextInt(myIndList.size()));
         gameName = driver.findElement(By.xpath(String.format(GAME_WITH_MAX_DISCOUNT_LOCATOR, indDiscount))).getText();
-
         return indDiscount;
     }
 
     public void gameClick(){
         Label gameSelect = new Label(By.xpath(String.format(GAME_LINK, searchForBestDiscount())));
         gameSelect.click();
-        changeTab();
     }
 }

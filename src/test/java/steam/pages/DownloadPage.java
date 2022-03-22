@@ -1,4 +1,4 @@
-package Steam.pages;
+package steam.pages;
 
 import framework.PropertiesManager;
 import framework.elements.Button;
@@ -7,10 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.io.File;
 
-public class AboutPage extends BasePage{
+public class DownloadPage extends BasePage{
 
     PropertiesManager propertiesManager = new PropertiesManager();
 
@@ -22,7 +21,8 @@ public class AboutPage extends BasePage{
             + propertiesManager.getProperty(PropertiesManager.configPropertyPath, "download_file_name"));
 
     public boolean waitForDownload(final File file){
-        return (new WebDriverWait(driver, 10).until(new ExpectedCondition<Boolean>() {
+        return (new WebDriverWait(driver,
+                Integer.parseInt(propertiesManager.getProperty(PropertiesManager.configPropertyPath, "implicit_wait"))).until(new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver driver) {
                 return file.canRead();
