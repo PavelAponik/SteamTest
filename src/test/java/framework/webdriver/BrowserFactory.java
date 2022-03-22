@@ -18,7 +18,7 @@ public class BrowserFactory {
     public static WebDriver browserSetUp(){
         WebDriver driver = null;
         PropertiesManager propertiesManager = new PropertiesManager();
-        browser = propertiesManager.getProperty(PropertiesManager.configPropertyPath, "browser");
+        //browser = propertiesManager.getProperty(PropertiesManager.configPropertyPath, "browser");
 
         switch (browser){
             case "chrome":
