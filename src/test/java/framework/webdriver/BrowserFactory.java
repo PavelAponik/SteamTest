@@ -15,10 +15,10 @@ public class BrowserFactory {
 
     public static String browser;
 
-    public static WebDriver browserSetUp(final String browser){
+    public static WebDriver browserSetUp(){
         WebDriver driver = null;
         PropertiesManager propertiesManager = new PropertiesManager();
-        //browser = propertiesManager.getProperty(PropertiesManager.configPropertyPath, "browser");
+        browser = propertiesManager.getProperty(PropertiesManager.configPropertyPath, "browser");
 
         switch (browser){
             case "chrome":
