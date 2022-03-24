@@ -9,7 +9,7 @@ import org.openqa.selenium.NoSuchElementException;
 
 public class AgeCheckPage extends BasePage {
 
-    private final TextBox tbxCheckAge = new TextBox(By.xpath("//div[contains(@class, 'agegate_birthday_desc')]"), "Check Age");
+    private final TextBox txbCheckAge = new TextBox(By.xpath("//div[contains(@class, 'agegate_birthday_desc')]"), "Check Age");
     private final Dropdown drpAgeYear = new Dropdown(By.id("ageYear"), "Year");
     private final Button btnViewPage = new Button(By.id("view_product_page_btn"), "View Page");
 
@@ -19,7 +19,7 @@ public class AgeCheckPage extends BasePage {
 
     public boolean isCheckAgePageOpened(){
         try {
-            return tbxCheckAge.isDisplayed();
+            return txbCheckAge.isDisplayed();
         }catch (NoSuchElementException e){
             return false;
         }

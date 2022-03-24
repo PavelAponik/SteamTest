@@ -10,6 +10,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <allure-testng.version>2.6.0</allure-testng.version>
+        <aspectj.version>1.9.8</aspectj.version>
+        <selenium-version>4.0.0</selenium-version>
+        <testng-version>7.5</testng-version>
+
     </properties>
 
     <build>
@@ -27,7 +31,7 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.8/aspectjweaver-1.9.8.jar"</argLine>
+                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
@@ -39,7 +43,7 @@
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
-                        <version>1.9.8</version>
+                        <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
