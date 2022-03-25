@@ -13,7 +13,7 @@
         <aspectj.version>1.9.8</aspectj.version>
         <selenium-version>4.0.0</selenium-version>
         <testng-version>7.5</testng-version>
-
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     </properties>
 
     <build>
@@ -55,6 +55,9 @@
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>2.11.2</version>
+                <configuration>
+                    <reportVersion>2.6.0</reportVersion>
+                </configuration>
             </plugin>
         </plugins>
     </build>
