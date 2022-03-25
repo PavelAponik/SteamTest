@@ -4,6 +4,7 @@ import framework.elements.Button;
 import framework.elements.Dropdown;
 import framework.elements.Label;
 import framework.webdriver.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.HashMap;
@@ -26,7 +27,7 @@ public class MainPage extends BasePage {
         languages.put("Русский", "src/test/resources/localization/loc_ru.properties");
         return languages;
     }
-
+    @Step("Choosing the language")
     public void chooseLanguage(String language){
         Dropdown drpChooseLanguage = new Dropdown(By.xpath(String.format(SUB_MENU_ITEM_LOCATOR, language)), language);
         btnChooseLanguage.click();
@@ -49,6 +50,7 @@ public class MainPage extends BasePage {
         return true;
     }
 
+    @Step("Going to the Action Page")
     public void menuNavigation(String menuItem, String subMenuItem){
         Label lblMenuItem = new Label(By.xpath(String.format(MENU_ITEM_LOCATOR, menuItem)), menuItem);
         Label lblSubMenuItem = new Label(By.xpath(String.format(SUB_MENU_ITEM_LOCATOR, subMenuItem)), subMenuItem);

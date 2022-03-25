@@ -3,6 +3,7 @@ package steam.pages;
 import framework.PropertiesManager;
 import framework.elements.Button;
 import framework.webdriver.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,11 +22,13 @@ public class DownloadPage extends BasePage{
         super(By.xpath("//body[@class='v6 infinite_scrolling responsive_page']"), "DownloadPage");
     }
 
+    @Step("Waiting for the file downloading")
     public boolean waitForDownload(final File file){
         return (new WebDriverWait(driver,
                 Integer.parseInt(propertiesManager.getProperty(PropertiesManager.configPropertyPath, "implicit_wait"))).until((ExpectedCondition<Boolean>) driver -> file.canRead()));
     }
 
+    @Step("Download th file")
     public void downloadApp(){
         btnInstallSteamApp.click();
         this.waitForDownload(file);
@@ -35,6 +38,7 @@ public class DownloadPage extends BasePage{
         return file.exists();
     }
 
+    @Step("Removing existing file")
     public void deleteFile(boolean bool){
         if(bool){
             file.delete();

@@ -2,6 +2,7 @@ package steam.pages;
 
 import framework.elements.Button;
 import framework.webdriver.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class GamePage extends BasePage {
@@ -12,6 +13,7 @@ public class GamePage extends BasePage {
         super(By.xpath("//div[@id = 'appHubAppName'"),"GamePage");
     }
 
+    @Step("Go to Install Steam")
     public void clickInstallSteam(){
         btnInstallSteam.click();
     }

@@ -1,6 +1,7 @@
 package steam.pages;
 
 import framework.webdriver.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,6 +17,7 @@ public class CategoryPage extends BasePage {
         super(By.xpath("//body[@class='v6 infinite_scrolling responsive_page']"), "CategoryPage");
     }
 
+    @Step("Searching for the game with highest discount")
     public void searchForBestDiscount(){
         List<WebElement> discounts = driver.findElements(By.xpath(DISCOUNT_LOCATOR));
         List<String> list = new ArrayList<>();

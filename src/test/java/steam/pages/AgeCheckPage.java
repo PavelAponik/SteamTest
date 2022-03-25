@@ -4,6 +4,7 @@ import framework.elements.Button;
 import framework.elements.Dropdown;
 import framework.elements.TextBox;
 import framework.webdriver.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
@@ -25,6 +26,7 @@ public class AgeCheckPage extends BasePage {
         }
     }
 
+    @Step("Age Check")
     public void selectAge(String year){
         drpAgeYear.select(year);
         btnViewPage.click();
