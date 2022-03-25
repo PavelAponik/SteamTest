@@ -40,6 +40,7 @@ public class MainPage extends BasePage {
         }
     }
 
+    @Step("Language is chosen")
     public boolean isLanguageChosen(String language){
         Dropdown drpLanguageList = new Dropdown(By.xpath(LANGUAGE_LIST), "languages");
         for (WebElement element : drpLanguageList.getElementList()){
